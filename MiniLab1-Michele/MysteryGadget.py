@@ -156,7 +156,7 @@ class MysteryGadget:
         if self.display:
             self.display.clear()
             line0 = f"RPM: {self.min_rpm}"
-            line1 = "Speed: 0 mph"
+            line1 = "Speed: 0%"
             self.display.showText(f"{line0:<16}"[:16], row=0, col=0)
             self.display.showText(f"{line1:<16}"[:16], row=1, col=0)
 
@@ -287,7 +287,7 @@ class MysteryGadget:
                 # 5. Update LCD Display with RPM and Speed
                 if self.display:
                     line0 = f"RPM: {rpm}"
-                    line1 = f"Speed: {speed} mph"
+                    line1 = f"Speed: {int(ratio * 100)}%"
                     self.display.showText(f"{line0:<16}"[:16], row=0, col=0)
                     self.display.showText(f"{line1:<16}"[:16], row=1, col=0)
 
@@ -392,7 +392,7 @@ if __name__ == "__main__":
     assert gadget._running is True, "Engine should be running after start()"
     assert mock_buzzer.is_playing is True, "Buzzer should be playing low-frequency idle tone"
     assert "RPM: 800" in mock_display.rows[0], "Display row 0 should show idle RPM"
-    assert "Speed: 0 mph" in mock_display.rows[1], "Display row 1 should show 0 mph"
+    assert "Speed: 0%" in mock_display.rows[1], "Display row 1 should show 0%"
 
     # 3. Test control() at Idle throttle
     Log.i("--- Testing control() at Idle (0) ---")
@@ -411,7 +411,7 @@ if __name__ == "__main__":
     mock_pot.value = 65535
     gadget.control(steps=1, delay=0.01)
     assert "RPM: 7000" in mock_display.rows[0], "Display should show max RPM"
-    assert "Speed: 120 mph" in mock_display.rows[1], "Display should show max speed"
+    assert "Speed: 100%" in mock_display.rows[1], "Display should show max speed"
 
     # 6. Test stop()
     Log.i("--- Testing stop() ---")
