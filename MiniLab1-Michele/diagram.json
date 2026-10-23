@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Mimi",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": -75.9,
+      "left": -19.45,
+      "rotate": 270,
+      "attrs": { "env": "micropython-20260406-v1.28.0" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 102.4,
+      "left": -80.8,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -154.9, "left": -57.8, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -141.6,
+      "left": 126.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -37.63,
+      "left": 217.26,
+      "attrs": { "pixels": "8" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -85.64, "left": -163.2, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc2", "top": -95.24, "left": 316.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 201.6, "left": -154.2, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 192, "left": 316.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "vcc1:VCC", "lcd1:VCC", "red", [ "v201.6", "h76.8" ] ],
+    [ "gnd1:GND", "lcd1:GND", "black", [ "v-67.2", "h67.2" ] ],
+    [ "vcc2:VCC", "ring1:VCC", "red", [ "v153.6", "h-67.2" ] ],
+    [ "gnd2:GND", "ring1:GND", "black", [ "v-96", "h-76.8" ] ],
+    [ "gnd2:GND", "bz1:2", "black", [ "v-96", "h-105.6", "v-38.4", "h-57.6", "v-105.6", "h0.4" ] ],
+    [ "vcc1:VCC", "pot1:VCC", "red", [ "v-9.6", "h144" ] ],
+    [ "pot1:SIG", "pico:GP26", "green", [ "v28.8", "h38" ] ],
+    [ "gnd1:GND", "pot1:GND", "black", [ "v-259.2", "h115.2" ] ],
+    [ "bz1:1", "pico:GP16", "green", [ "v0" ] ],
+    [ "ring1:DIN", "pico:GP2", "green", [ "v9.6", "h-307.2" ] ],
+    [ "lcd1:SDA", "pico:GP0", "blue", [ "h-19.2", "v0.2" ] ],
+    [ "lcd1:SCL", "pico:GP1", "blue", [ "h-9.6", "v-86.1", "h28.8" ] ]
+  ],
+  "dependencies": {}
+}
