@@ -1,7 +1,7 @@
 """
 # MysteryGadget.py
 # MysteryGadget engine simulator using an LCD display, buzzer, NeoPixel strip, and potentiometer
-# Author: insert your name here
+# Author: Michele Markovits
 """
 
 import time
@@ -258,7 +258,7 @@ class MysteryGadget:
                 # 2. Compute simulated RPM, Speed, and Engine Audio Pitch
                 rpm = int(self.min_rpm + ratio * (self.max_rpm - self.min_rpm))
                 speed = int(ratio * self.max_speed)
-                pitch = int(65 + ratio * (420 - 65))  # Low idle hum up to high rev tone
+                pitch = int(500 + ratio * (1500 - 500))  # Low idle hum up to high rev tone
 
                 # 3. Update buzzer pitch
                 if self.buzzer:
