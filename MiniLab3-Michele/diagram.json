@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "author": "ISM6106 Student",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 120, "left": 150, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -70.4,
+      "left": 82.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring",
+      "top": 48.64,
+      "left": -142.81,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": -257.7,
+      "left": 130.3,
+      "attrs": { "distance": "8" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": -140,
+      "left": 460,
+      "attrs": { "hasLocalSound": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_jr",
+      "top": 350,
+      "left": 30,
+      "attrs": { "color": "green", "label": "Just Right / Reset" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_tc",
+      "top": 350,
+      "left": 160,
+      "attrs": { "color": "blue", "label": "Too Cold" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_tw",
+      "top": 350,
+      "left": 290,
+      "attrs": { "color": "yellow", "label": "Too Warm" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_mute",
+      "top": 350,
+      "left": 420,
+      "attrs": { "color": "red", "label": "Manager Mute" }
+    }
+  ],
+  "connections": [
+    [ "lcd:GND", "pico:GND.1", "black", [ "h-20", "v120" ] ],
+    [ "lcd:VCC", "pico:VBUS", "red", [ "h-10", "v140" ] ],
+    [ "lcd:SDA", "pico:GP0", "blue", [ "h10", "v80" ] ],
+    [ "lcd:SCL", "pico:GP1", "green", [ "h20", "v70" ] ],
+    [ "ultrasonic:GND", "pico:GND.2", "black", [ "v40", "h-40" ] ],
+    [ "ultrasonic:VCC", "pico:VBUS", "red", [ "v30", "h-30" ] ],
+    [ "ultrasonic:TRIG", "pico:GP2", "purple", [ "v50", "h-20" ] ],
+    [ "ultrasonic:ECHO", "pico:GP3", "orange", [ "v60", "h-10" ] ],
+    [ "ring:GND", "pico:GND.3", "black", [ "v30", "h-30" ] ],
+    [ "ring:VCC", "pico:VBUS", "red", [ "v40", "h-20" ] ],
+    [ "ring:DIN", "pico:GP6", "cyan", [ "v50", "h-10" ] ],
+    [ "buzzer:1", "pico:GND.4", "black", [ "v40", "h-80" ] ],
+    [ "buzzer:2", "pico:GP7", "magenta", [ "v50", "h-70" ] ],
+    [ "btn_jr:1.l", "pico:GP10", "green", [ "v-30", "h30" ] ],
+    [ "btn_jr:2.l", "pico:GND.5", "black", [ "v-20", "h40" ] ],
+    [ "btn_tc:1.l", "pico:GP11", "blue", [ "v-30", "h20" ] ],
+    [ "btn_tc:2.l", "pico:GND.6", "black", [ "v-20", "h30" ] ],
+    [ "btn_tw:1.l", "pico:GP12", "yellow", [ "v-30", "h10" ] ],
+    [ "btn_tw:2.l", "pico:GND.7", "black", [ "v-20", "h20" ] ],
+    [ "btn_mute:1.l", "pico:GP13", "red", [ "v-30", "h0" ] ],
+    [ "btn_mute:2.l", "pico:GND.8", "black", [ "v-20", "h10" ] ]
+  ],
+  "dependencies": {}
+}
